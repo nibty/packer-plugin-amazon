@@ -46,6 +46,7 @@ type Config struct {
 	LicenseType     string            `mapstructure:"license_type"`
 	RoleName        string            `mapstructure:"role_name"`
 	Format          string            `mapstructure:"format"`
+	SkipImport      bool              `mapstructure:"skip_import"`
 
 	ctx interpolate.Context
 }
@@ -161,6 +162,11 @@ func (p *PostProcessor) PostProcess(ctx context.Context, ui packersdk.Ui, artifa
 			source = path
 			break
 		}
+	}
+
+	if p.config.SkipImport {
+		log.Printf("Skipping Amazon import as user requested")
+		return artifact, false, false, nil
 	}
 
 	// Hope we found something useful

@@ -173,6 +173,10 @@ Optional:
   probably don't need it. This will also be read from the `AWS_SESSION_TOKEN`
   environmental variable.
 
+- `skip_import` - Whether we should skip the import for the current build.
+  "true" means that we should skip the import, "false" means to import as usual.
+  Defaults to `false`.
+
 ## Basic Example
 
 Here is a basic example. This assumes that the builder has produced an OVA

@@ -50,6 +50,7 @@ type FlatConfig struct {
 	LicenseType           *string                           `mapstructure:"license_type" cty:"license_type" hcl:"license_type"`
 	RoleName              *string                           `mapstructure:"role_name" cty:"role_name" hcl:"role_name"`
 	Format                *string                           `mapstructure:"format" cty:"format" hcl:"format"`
+	SkipImport            *bool                             `mapstructure:"skip_import" cty:"skip_import" hcl:"skip_import"`
 }
 
 // FlatMapstructure returns a new FlatConfig.
@@ -103,6 +104,7 @@ func (*FlatConfig) HCL2Spec() map[string]hcldec.Spec {
 		"license_type":                  &hcldec.AttrSpec{Name: "license_type", Type: cty.String, Required: false},
 		"role_name":                     &hcldec.AttrSpec{Name: "role_name", Type: cty.String, Required: false},
 		"format":                        &hcldec.AttrSpec{Name: "format", Type: cty.String, Required: false},
+		"skip_import":                   &hcldec.AttrSpec{Name: "skip_import", Type: cty.Bool, Required: false},
 	}
 	return s
 }
